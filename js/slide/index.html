@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image-list{
+            margin-top: 5%;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #444;
+            padding: 10px;
+            border-radius: 5px;
+            width: 500px;
+            overflow: hidden;
+        }
+        .image-list img{
+            width: 15%;
+            margin: 0 20px;
+        }
+        .afficheur{
+            /* display: none; */
+            position: fixed;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0px;
+            z-index: 99999;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background-color: cornflowerblue;
+            padding: 10px;
+        }
+        .afficheur img{
+            width: 50%;
+        }
+        button{
+            cursor: pointer;
+        }
+        .close{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <center>hello world</center>
+    <div class="image-list">
+        <img src="./images/1ee986e525c6babc7fcd540467ab24d3.png">
+        <img src="./images/2dfe8b2d43196d9f8513a8bf2c9eb02f.jpg">
+        <img src="./images/6cf75f8019338171f18532edc511cea6.png">
+        <img src="./images/8debcbb3e40ae90caf728857dda1efc7.jpg">
+    </div>
+    <div class="afficheur">
+        <span class="close"><button>fermer</button></span>
+        <img src="./images/1ee986e525c6babc7fcd540467ab24d3.png">
+    </div>
+    <div class="image-list">
+        <img src="./images/1ee986e525c6babc7fcd540467ab24d3.png">
+        <img src="./images/2dfe8b2d43196d9f8513a8bf2c9eb02f.jpg">
+        <img src="./images/6cf75f8019338171f18532edc511cea6.png">
+        <img src="./images/8debcbb3e40ae90caf728857dda1efc7.jpg">
+    </div>
+    <script>
+        const getElementByQuery = (query)=> document.querySelector(query)
+        const imageContainer = getElementByQuery('.image-list')
+        const images = document.querySelectorAll('img')
+        const afficheur = getElementByQuery('.afficheur')
+        const imageToAffiche = getElementByQuery('.afficheur img')
+
+        images.forEach(image =>{
+            image.addEventListener('click', ()=>{
+                afficheur.style.display = 'flex'
+                imageToAffiche.src = `${image.src}`
+            })
+        })
+
+        getElementByQuery('.close').addEventListener('click', ()=> afficheur.style.display = 'none')
+    </script>
+</body>
+</html>
